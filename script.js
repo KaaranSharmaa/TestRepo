@@ -343,7 +343,7 @@ function selectUser(name) {
   
   const greetingEl = document.getElementById('personalized-greeting');
   if (name === 'Anusha') {
-    greetingEl.textContent = 'Uff Anu is mote chutad ki Love of my life, Babedii, Hathi, Padunia, Moti, Chumeshwari… my biwi Chaudhary ❤️😂 Chalo guess the password';
+    greetingEl.textContent = 'Uff Anu is here mote chutad ki Love of my life, Babedii, Hathi, Padunia, Moti, Chumeshwari… my biwi Chaudhary ❤️😂 Chalo guess the password';
   } else if (name === 'Karan') {
     greetingEl.textContent = 'Hello Karan';
   }
