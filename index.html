@@ -9,8 +9,20 @@
 </head>
 <body>
 
+  <!-- ===================== WELCOME SCREEN ===================== -->
+  <section id="welcome-screen">
+    <div class="password-card">
+      <div class="heart-icon">👀</div>
+      <h1>Ohhhh hello, look who is here! Ahem ahem! 😏</h1>
+      <div class="user-buttons">
+        <button class="primary-btn user-btn" onclick="selectUser('Karan')">Karan</button>
+        <button class="primary-btn user-btn" onclick="selectUser('Anusha')">Anusha</button>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== PASSWORD SCREEN ===================== -->
-  <section id="password-screen">
+  <section id="password-screen" class="hidden">
     <div class="password-card">
       <div class="heart-icon">❤️</div>
       <h1>Welcome Back ❤️</h1>
@@ -19,6 +31,7 @@
         <input type="password" id="password-input" placeholder="Enter password..." autocomplete="off" />
         <button id="enter-btn" onclick="checkPassword()">Enter</button>
       </div>
+      <p id="personalized-greeting" class="personalized-greeting"></p>
       <p id="error-msg" class="error-msg">Hmm, that's not right. Try again 🌸</p>
     </div>
   </section>
@@ -27,15 +40,15 @@
   <section id="landing-page" class="hidden">
     <div class="landing-content">
       <h1 class="landing-heading">Hey, You ❤️</h1>
-      <p class="landing-subtitle">Here you are again...</p>
+      <p class="landing-subtitle">Hello Biwi Ch..uff Look at that eye .</p>
 
       <!-- HERO IMAGE: Replace "images/hero.jpg" with your chosen hero photo -->
       <div class="hero-image-wrapper">
-        <img src="images/hero.jpg" alt="Our photo" class="hero-image" onerror="this.style.display='none'; this.parentElement.classList.add('no-image')" />
+        <img src="images/1.jpeg" alt="Our photo" class="hero-image" onerror="this.style.display='none'; this.parentElement.classList.add('no-image')" />
         <div class="hero-placeholder">📷</div>
       </div>
 
-      <button class="primary-btn" onclick="openGallery()">View Our Memories →</button>
+      <button class="primary-btn" onclick="openGallery()">Welcome to K&A World →</button>
     </div>
   </section>
 
@@ -46,10 +59,10 @@
       <h2 class="gallery-title">Our Memories</h2>
 
       <div class="slideshow">
+        <p id="slide-caption" class="slide-caption"></p>
         <div class="slide-wrapper">
           <img id="slide-img" src="" alt="Memory" />
         </div>
-        <p id="slide-caption" class="slide-caption"></p>
         <p id="slide-counter" class="slide-counter">1 / 1</p>
         <div class="slide-controls">
           <button class="nav-btn" onclick="prevPhoto()">← Prev</button>
