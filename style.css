@@ -1,0 +1,286 @@
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --rose:    #c9748f;
+  --blush:   #f5e6ea;
+  --cream:   #fdf8f5;
+  --text:    #3d2b2b;
+  --muted:   #9e7b7b;
+  --white:   #ffffff;
+  --radius:  16px;
+  --shadow:  0 8px 32px rgba(180, 100, 120, 0.15);
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ===== SECTION VISIBILITY ===== */
+section { min-height: 100dvh; display: flex; align-items: center; justify-content: center; }
+.hidden { display: none !important; }
+
+/* ===== PASSWORD SCREEN ===== */
+#password-screen {
+  background: linear-gradient(145deg, #fdf0f3 0%, #f9e4ea 50%, #fdf8f5 100%);
+  padding: 24px;
+}
+
+.password-card {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 48px 40px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow);
+  animation: fadeUp 0.7s ease both;
+}
+
+.heart-icon { font-size: 2.4rem; margin-bottom: 16px; animation: pulse 2s infinite; }
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.12); }
+}
+
+.password-card h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.password-card .subtitle {
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.input-group { display: flex; flex-direction: column; gap: 12px; }
+
+.input-group input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1.5px solid #e8d0d8;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  background: var(--blush);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.input-group input:focus { border-color: var(--rose); }
+
+.error-msg {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: var(--rose);
+  opacity: 0;
+  transition: opacity 0.3s;
+  min-height: 20px;
+}
+.error-msg.show { opacity: 1; }
+
+/* ===== LANDING PAGE ===== */
+#landing-page {
+  background: linear-gradient(160deg, #fdf0f3 0%, #fdf8f5 100%);
+  padding: 24px;
+}
+
+.landing-content {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  animation: fadeUp 0.8s ease both;
+}
+
+.landing-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.landing-subtitle {
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 32px;
+}
+
+/* Hero image */
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto 36px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--blush);
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-placeholder {
+  font-size: 3rem;
+  color: var(--muted);
+  position: absolute;
+}
+
+.hero-image-wrapper:not(.no-image) .hero-placeholder { display: none; }
+
+/* ===== BUTTONS ===== */
+.primary-btn {
+  display: inline-block;
+  padding: 15px 36px;
+  background: linear-gradient(135deg, var(--rose), #b05c78);
+  color: var(--white);
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(180, 100, 120, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.primary-btn:hover  { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(180, 100, 120, 0.4); }
+.primary-btn:active { transform: translateY(0); }
+
+/* ===== GALLERY PAGE ===== */
+#gallery-page {
+  background: linear-gradient(160deg, #fdf0f3 0%, #fdf8f5 100%);
+  padding: 24px;
+  align-items: flex-start;
+}
+
+.gallery-container {
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 0 40px;
+  animation: fadeUp 0.6s ease both;
+}
+
+.back-btn {
+  background: none;
+  border: 1.5px solid #e8d0d8;
+  color: var(--muted);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.back-btn:hover { border-color: var(--rose); color: var(--rose); }
+
+.gallery-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 28px;
+  color: var(--text);
+}
+
+/* Slideshow */
+.slideshow { text-align: center; }
+
+.slide-wrapper {
+  width: 100%;
+  max-height: 65vh;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--blush);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+#slide-img {
+  max-width: 100%;
+  max-height: 65vh;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  transition: opacity 0.4s ease;
+}
+
+#slide-img.fade { opacity: 0; }
+
+.slide-caption {
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-style: italic;
+  min-height: 22px;
+  margin-bottom: 8px;
+}
+
+.slide-counter {
+  font-size: 0.85rem;
+  color: #c4a0a8;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.slide-controls { display: flex; gap: 16px; justify-content: center; }
+
+.nav-btn {
+  padding: 13px 30px;
+  border: 1.5px solid var(--rose);
+  background: transparent;
+  color: var(--rose);
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  min-width: 110px;
+}
+
+.nav-btn:hover  { background: var(--rose); color: var(--white); transform: translateY(-1px); }
+.nav-btn:active { transform: translateY(0); }
+
+/* ===== SHARED ANIMATION ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 480px) {
+  .password-card { padding: 36px 24px; }
+  .slide-wrapper { max-height: 55vh; border-radius: 14px; }
+  #slide-img     { max-height: 55vh; }
+  .nav-btn       { padding: 13px 22px; min-width: 90px; }
+  .gallery-container { padding: 16px 0 32px; }
+}

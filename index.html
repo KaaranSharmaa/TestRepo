@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You ❤️</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===================== PASSWORD SCREEN ===================== -->
+  <section id="password-screen">
+    <div class="password-card">
+      <div class="heart-icon">❤️</div>
+      <h1>Welcome Back ❤️</h1>
+      <p class="subtitle">Some memories are meant to be revisited.</p>
+      <div class="input-group">
+        <input type="password" id="password-input" placeholder="Enter password..." autocomplete="off" />
+        <button id="enter-btn" onclick="checkPassword()">Enter</button>
+      </div>
+      <p id="error-msg" class="error-msg">Hmm, that's not right. Try again 🌸</p>
+    </div>
+  </section>
+
+  <!-- ===================== LANDING PAGE ===================== -->
+  <section id="landing-page" class="hidden">
+    <div class="landing-content">
+      <h1 class="landing-heading">Hey, You ❤️</h1>
+      <p class="landing-subtitle">Here you are again...</p>
+
+      <!-- HERO IMAGE: Replace "images/hero.jpg" with your chosen hero photo -->
+      <div class="hero-image-wrapper">
+        <img src="images/hero.jpg" alt="Our photo" class="hero-image" onerror="this.style.display='none'; this.parentElement.classList.add('no-image')" />
+        <div class="hero-placeholder">📷</div>
+      </div>
+
+      <button class="primary-btn" onclick="openGallery()">View Our Memories →</button>
+    </div>
+  </section>
+
+  <!-- ===================== PHOTO GALLERY ===================== -->
+  <section id="gallery-page" class="hidden">
+    <div class="gallery-container">
+      <button class="back-btn" onclick="goBack()">← Back</button>
+      <h2 class="gallery-title">Our Memories</h2>
+
+      <div class="slideshow">
+        <div class="slide-wrapper">
+          <img id="slide-img" src="" alt="Memory" />
+        </div>
+        <p id="slide-caption" class="slide-caption"></p>
+        <p id="slide-counter" class="slide-counter">1 / 1</p>
+        <div class="slide-controls">
+          <button class="nav-btn" onclick="prevPhoto()">← Prev</button>
+          <button class="nav-btn" onclick="nextPhoto()">Next →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
