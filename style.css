@@ -118,33 +118,30 @@ h1, h2, h3, h4, .elegant-heading {
 /* ===== MUSIC PLAYER ===== */
 .music-players-container {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  top: 15px; /* Moved to top left */
+  left: 15px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   z-index: 1000;
 }
 .music-player-btn {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  padding: 10px 20px;
-  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 8px 15px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
   transition: var(--transition-smooth);
 }
 .music-player-btn:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px) scale(1.05);
 }
-.music-icon { font-size: 1.2rem; animation: pulse 2s infinite; }
-.music-text { font-family: var(--font-body); font-size: 0.9rem; font-weight: 400; color: var(--color-text-main); }
+.music-icon { font-size: 1rem; animation: pulse 2s infinite; }
+.music-text { font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: var(--color-text-main); }
 
 /* ===== BUTTONS ===== */
 .primary-btn {
@@ -185,23 +182,20 @@ h1, h2, h3, h4, .elegant-heading {
 /* ===== LAYOUT & SECTIONS ===== */
 .fullscreen-section, .scrolling-section {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  display: block; /* Removed flexbox to fix iOS scroll bug */
   text-align: center;
-  padding: max(10vh, 40px) 20px 100px 20px; /* Lots of bottom padding for scroll */
+  padding: 0 20px; /* Horizontal padding only */
 }
 
 .content {
   max-width: 800px;
   width: 100%;
   z-index: 2;
-  margin: 0 auto; /* Removed vertical margin: auto to fix scroll cutoff */
+  margin: max(10vh, 40px) auto 100px auto; /* Handles vertical spacing and horizontal centering */
 }
 
 .fullscreen-section {
-  min-height: 100dvh;
+  height: 100dvh;
   position: fixed;
   top: 0; left: 0; width: 100%;
   background: var(--color-bg-primary);
