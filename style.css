@@ -116,10 +116,16 @@ h1, h2, h3, h4, .elegant-heading {
 }
 
 /* ===== MUSIC PLAYER ===== */
-#music-player {
+.music-players-container {
   position: fixed;
   bottom: 30px;
   right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1000;
+}
+.music-player-btn {
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -130,11 +136,10 @@ h1, h2, h3, h4, .elegant-heading {
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  z-index: 1000;
   box-shadow: var(--shadow-soft);
   transition: var(--transition-smooth);
 }
-#music-player:hover {
+.music-player-btn:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-hover);
 }
@@ -185,14 +190,14 @@ h1, h2, h3, h4, .elegant-heading {
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-  padding: 40px 20px;
+  padding: max(10vh, 40px) 20px 100px 20px; /* Lots of bottom padding for scroll */
 }
 
 .content {
   max-width: 800px;
   width: 100%;
   z-index: 2;
-  margin: auto; /* Centers content safely */
+  margin: 0 auto; /* Removed vertical margin: auto to fix scroll cutoff */
 }
 
 .fullscreen-section {
@@ -203,6 +208,7 @@ h1, h2, h3, h4, .elegant-heading {
   z-index: 10;
   transition: opacity 1s ease, visibility 1s ease;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .fullscreen-section.hidden {
   opacity: 0;

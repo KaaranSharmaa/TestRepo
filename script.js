@@ -429,19 +429,47 @@ function typeWriterEffect() {
 // ============================================================
 //  MUSIC PLAYER & PARTICLES
 // ============================================================
-let isMusicPlaying = false;
-function toggleMusic() {
-    const audio = document.getElementById("bg-audio");
-    const text = document.querySelector(".music-text");
+let currentPlaying = null; // 'genz', 'millennial', 'haha'
+
+function toggleMusic(type) {
+    const audioGenz = document.getElementById("audio-genz");
+    const audioMillennial = document.getElementById("audio-millennial");
+    const audioHaha = document.getElementById("audio-haha");
     
-    if (isMusicPlaying) {
-        audio.pause();
-        text.textContent = "Play our song";
+    const textGenz = document.getElementById("text-genz");
+    const textMillennial = document.getElementById("text-millennial");
+    const textHaha = document.getElementById("text-haha");
+    
+    // reset all texts
+    textGenz.textContent = "Play GenZ Song";
+    textMillennial.textContent = "Play Millennial Song";
+    textHaha.textContent = "Play HAHA MY SONG";
+
+    if (currentPlaying === type) {
+        // Stop the currently playing one
+        if(type === 'genz') audioGenz.pause();
+        if(type === 'millennial') audioMillennial.pause();
+        if(type === 'haha') audioHaha.pause();
+        currentPlaying = null;
     } else {
-        audio.play().catch(e => console.log("Audio play failed"));
-        text.textContent = "Playing... ❤️";
+        // Pause all first
+        audioGenz.pause();
+        audioMillennial.pause();
+        audioHaha.pause();
+        
+        // Play the selected one
+        if (type === 'genz') {
+            audioGenz.play().catch(e => console.log("Play failed", e));
+            textGenz.textContent = "Playing GenZ... ❤️";
+        } else if (type === 'millennial') {
+            audioMillennial.play().catch(e => console.log("Play failed", e));
+            textMillennial.textContent = "Playing Millennial... ❤️";
+        } else if (type === 'haha') {
+            audioHaha.play().catch(e => console.log("Play failed", e));
+            textHaha.textContent = "Playing HAHA... ❤️";
+        }
+        currentPlaying = type;
     }
-    isMusicPlaying = !isMusicPlaying;
 }
 
 function createParticles() {

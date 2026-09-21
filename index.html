@@ -14,13 +14,29 @@
   <!-- Floating Particles Background -->
   <div id="particles-bg"></div>
 
-  <!-- Music Player Toggle -->
-  <div id="music-player" onclick="toggleMusic()">
-    <span class="music-icon">🎵</span>
-    <span class="music-text">Play our song</span>
-    <audio id="bg-audio" loop>
-      <source src="Kishore_Kumar_-_Saagar_Jaisi_Aankhonwali_From_Saagar_From_Saagar_(mp3.pm).mp3" type="audio/mpeg">
-    </audio>
+  <!-- Music Player Toggles -->
+  <div class="music-players-container">
+    <div class="music-player-btn" onclick="toggleMusic('haha')">
+      <span class="music-icon">🎵</span>
+      <span class="music-text" id="text-haha">Play HAHA MY SONG</span>
+      <audio id="audio-haha" loop>
+        <source src="Akon_Colby_O_Donis_-_Beautiful._(mp3.pm).mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <div class="music-player-btn" onclick="toggleMusic('genz')">
+      <span class="music-icon">🎵</span>
+      <span class="music-text" id="text-genz">Play GenZ Song</span>
+      <audio id="audio-genz" loop>
+        <source src="Beautiful - Millind Gaba (Mr-Punjab.Com)-320kb.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <div class="music-player-btn" onclick="toggleMusic('millennial')">
+      <span class="music-icon">🎵</span>
+      <span class="music-text" id="text-millennial">Play Millennial Song</span>
+      <audio id="audio-millennial" loop>
+        <source src="Kishore_Kumar_-_Saagar_Jaisi_Aankhonwali_From_Saagar_From_Saagar_(mp3.pm).mp3" type="audio/mpeg">
+      </audio>
+    </div>
   </div>
 
   <!-- ===================== SCREEN 1: INTRO ===================== -->
