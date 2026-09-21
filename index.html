@@ -3,74 +3,237 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For You ❤️</title>
+  <title>K & A — Our Little World ❤️</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@500;700&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- ===================== WELCOME SCREEN ===================== -->
-  <section id="welcome-screen">
-    <div class="password-card">
-      <div class="heart-icon">👀</div>
-      <h1>Ohhhh hello, look who is here! Ahem ahem! 😏</h1>
-      <div class="user-buttons">
-        <button class="primary-btn user-btn" onclick="selectUser('Karan')">Karan</button>
-        <button class="primary-btn user-btn" onclick="selectUser('Anusha')">Anusha</button>
+  <!-- Floating Particles Background -->
+  <div id="particles-bg"></div>
+
+  <!-- Music Player Toggle -->
+  <div id="music-player" onclick="toggleMusic()">
+    <span class="music-icon">🎵</span>
+    <span class="music-text">Play our song</span>
+    <audio id="bg-audio" loop>
+      <source src="Kishore_Kumar_-_Saagar_Jaisi_Aankhonwali_From_Saagar_From_Saagar_(mp3.pm).mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <!-- ===================== SCREEN 1: INTRO ===================== -->
+  <section id="screen-intro" class="fullscreen-section active">
+    <div class="content fade-in-up">
+      <h1 class="elegant-heading">Oh… you're here. ❤️</h1>
+      <p class="subtitle">I was wondering when you'd come back to our little world.</p>
+      <p class="small-text">Come on… I have something to show you.</p>
+      <button class="primary-btn mt-2" onclick="goToScreen('screen-choose')">Enter Our World &rarr;</button>
+      <p class="footer-text">Made with a little love, a lot of memories, and one very special person.</p>
+    </div>
+  </section>
+
+  <!-- ===================== SCREEN 2: CHOOSE USER ===================== -->
+  <section id="screen-choose" class="fullscreen-section hidden">
+    <div class="content fade-in-up">
+      <h2 class="elegant-heading">Okay… who are you? 👀</h2>
+      <div class="cards-container mt-2">
+        <div class="user-card" onclick="selectUser('Karan')">
+          <h3>❤️ Karan</h3>
+          <p>the one who fell first</p>
+        </div>
+        <div class="user-card" onclick="selectUser('Anusha')">
+          <h3>💕 Anusha</h3>
+          <p>the one who stole his heart</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== PASSWORD SCREEN ===================== -->
-  <section id="password-screen" class="hidden">
-    <div class="password-card">
-      <div class="heart-icon">❤️</div>
-      <h1>Welcome Back ❤️</h1>
-      <p class="subtitle">Some memories are meant to be revisited.</p>
-      <div class="input-group">
-        <input type="password" id="password-input" placeholder="Enter password..." autocomplete="off" />
-        <button id="enter-btn" onclick="checkPassword()">Enter</button>
+  <!-- ===================== SCREEN 3: PASSWORD ===================== -->
+  <section id="screen-password" class="fullscreen-section hidden">
+    <div class="content fade-in-up password-box">
+      <h2 class="elegant-heading">Welcome back, love ❤️</h2>
+      <p class="subtitle">Some memories are meant to stay between two people.</p>
+      
+      <div class="input-wrapper mt-2">
+        <input type="password" id="password-input" placeholder="Our little secret..." autocomplete="off" />
+        <button class="primary-btn" onclick="checkPassword()">Unlock Our World ❤️</button>
       </div>
+      
       <p id="personalized-greeting" class="personalized-greeting"></p>
-      <p id="error-msg" class="error-msg">Hmm, that's not right. Try again 🌸</p>
+      <p id="error-msg" class="error-msg">Hmm… that's not our secret 😏 Try again.</p>
     </div>
   </section>
 
-  <!-- ===================== LANDING PAGE ===================== -->
-  <section id="landing-page" class="hidden">
-    <div class="landing-content">
-      <h1 class="landing-heading">Hey, You ❤️</h1>
-      <p class="landing-subtitle">Hello Biwi Ch..uff Look at that eye .</p>
-
-      <!-- HERO IMAGE: Replace "images/hero.jpg" with your chosen hero photo -->
-      <div class="hero-image-wrapper">
-        <img src="images/1.jpeg" alt="Our photo" class="hero-image" onerror="this.style.display='none'; this.parentElement.classList.add('no-image')" />
-        <div class="hero-placeholder">📷</div>
+  <!-- ===================== MAIN EXPERIENCE CONTAINER ===================== -->
+  <div id="main-experience" class="hidden">
+    
+    <!-- ===================== SCREEN 4: MAIN HERO ===================== -->
+    <section id="screen-hero" class="scrolling-section">
+      <div class="hero-image-container reveal">
+        <img src="images/1.jpeg" alt="Us" class="hero-img" id="hero-main-img" />
+        <div class="hero-overlay"></div>
       </div>
-
-      <button class="primary-btn" onclick="openGallery()">Welcome to K&A World →</button>
-    </div>
-  </section>
-
-  <!-- ===================== PHOTO GALLERY ===================== -->
-  <section id="gallery-page" class="hidden">
-    <div class="gallery-container">
-      <button class="back-btn" onclick="goBack()">← Back</button>
-      <h2 class="gallery-title">Our Memories</h2>
-
-      <div class="slideshow">
-        <p id="slide-caption" class="slide-caption"></p>
-        <div class="slide-wrapper">
-          <img id="slide-img" src="" alt="Memory" />
-        </div>
-        <p id="slide-counter" class="slide-counter">1 / 1</p>
-        <div class="slide-controls">
-          <button class="nav-btn" onclick="prevPhoto()">← Prev</button>
-          <button class="nav-btn" onclick="nextPhoto()">Next →</button>
+      <div class="hero-content reveal">
+        <h1 class="elegant-heading huge">Hey, You. ❤️</h1>
+        <p class="subtitle">Welcome to our little corner of the universe.</p>
+        <p class="handwriting-text">Just you. Just me. Just us. <span class="pulse-heart">❤️</span></p>
+        
+        <p class="poetic-text mt-2">
+          Every picture has a memory.<br>
+          Every memory has a story.<br>
+          And somehow… every story brings me back to you.
+        </p>
+        
+        <div class="hero-actions mt-2">
+          <button class="primary-btn" onclick="scrollToSection('screen-letter')">Take Me Through Our Memories &rarr;</button>
+          <p class="subtle-action">Stay here for a while ❤️</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- ===================== SCREEN 5: LOVE LETTER ===================== -->
+    <section id="screen-letter" class="scrolling-section bg-cream">
+      <div class="content reveal">
+        <h2 class="elegant-heading">A little something I don't say enough...</h2>
+        <div class="love-letter-card mt-2">
+          <div class="letter-content" id="typewriter-text">
+            <!-- Text injected by JS for typewriter effect -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SCREEN 6: OUR MEMORIES (CINEMATIC GALLERY) ===================== -->
+    <section id="screen-gallery" class="scrolling-section">
+      <div class="content reveal" style="width: 100%; max-width: 1200px;">
+        <h2 class="elegant-heading">Our Memories ❤️</h2>
+        <p class="subtitle mb-2">A collection of moments that somehow became my favourite moments.</p>
+        
+        <div class="cinematic-gallery">
+          <div class="gallery-viewer">
+            <button class="nav-arrow left" onclick="prevPhoto()">&larr;</button>
+            <div class="image-wrapper" id="gallery-image-wrapper">
+              <img id="gallery-main-img" src="" alt="Memory" loading="lazy" />
+            </div>
+            <button class="nav-arrow right" onclick="nextPhoto()">&rarr;</button>
+          </div>
+          
+          <div class="gallery-info mt-1">
+            <h4 id="gallery-counter" class="handwriting-text">Memory #1</h4>
+            <p id="gallery-caption" class="gallery-caption"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SCREEN 7: MEMORY TIMELINE ===================== -->
+    <section id="screen-timeline" class="scrolling-section bg-cream">
+      <div class="content reveal">
+        <h2 class="elegant-heading">Look How Far We've Come ❤️</h2>
+        
+        <div class="timeline mt-2">
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <h3 class="handwriting-text">Then</h3>
+              <p>That little moment...</p>
+              <img src="images/2.jpeg" alt="Then" loading="lazy" />
+            </div>
+          </div>
+          
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <h3 class="handwriting-text">Somewhere in between</h3>
+              <p>We didn't know these random moments would become memories.</p>
+              <img src="images/3.jpeg" alt="In between" loading="lazy" />
+            </div>
+          </div>
+          
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <h3 class="handwriting-text">Now</h3>
+              <p>And somehow we're still here.</p>
+              <img src="images/4.jpeg" alt="Now" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SCREEN 8: LITTLE THINGS ===================== -->
+    <section id="screen-little-things" class="scrolling-section">
+      <div class="content reveal">
+        <h2 class="elegant-heading">Things I Love About You</h2>
+        
+        <div class="things-grid mt-2">
+          <div class="thing-card reveal">❤️ Your smile</div>
+          <div class="thing-card reveal delay-1">❤️ The way you talk</div>
+          <div class="thing-card reveal delay-2">❤️ The way you annoy me</div>
+          <div class="thing-card reveal delay-3">❤️ Your eyes</div>
+          <div class="thing-card reveal">❤️ Your random moods</div>
+          <div class="thing-card reveal delay-1">❤️ Your laugh</div>
+          <div class="thing-card reveal delay-2">❤️ The way you make ordinary days feel special</div>
+          <div class="thing-card reveal delay-3 highlight">❤️ Simply… you.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SCREEN 9: OUR LITTLE STATS ===================== -->
+    <section id="screen-stats" class="scrolling-section bg-cream">
+      <div class="content reveal">
+        <h2 class="elegant-heading">Us, According to Me ❤️</h2>
+        
+        <div class="stats-container mt-2">
+          <div class="stat-box reveal">
+            <span class="stat-number">&infin;</span>
+            <span class="stat-label">Times I've thought about you</span>
+          </div>
+          <div class="stat-box reveal delay-1">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Chance I'll annoy you again</span>
+          </div>
+          <div class="stat-box reveal delay-2">
+            <span class="stat-number">&infin;</span>
+            <span class="stat-label">Memories I want to make</span>
+          </div>
+          <div class="stat-box reveal delay-3">
+            <span class="stat-number">1</span>
+            <span class="stat-label">Person I want beside me</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SCREEN 10: FINAL MESSAGE ===================== -->
+    <section id="screen-final" class="scrolling-section night-sky">
+      <div class="content">
+        <h2 class="elegant-heading text-white reveal">And if you ever forget...</h2>
+        
+        <div class="final-message-container mt-2">
+          <p class="final-line reveal delay-1 text-white">You are loved.</p>
+          <p class="final-line reveal delay-2 text-white">You are missed.</p>
+          <p class="final-line reveal delay-3 text-white">You are my favourite person.</p>
+          <p class="final-line reveal delay-4 text-white">And you will always have a place in my little world.</p>
+          
+          <h3 class="elegant-heading mt-2 signature reveal delay-5">K & A <span class="pulse-heart">❤️</span></h3>
+          
+          <p class="final-line handwriting-text mt-2 reveal delay-6 text-white">Our story isn't over...</p>
+          <p class="final-line handwriting-text reveal delay-7 text-white">It's still being written.</p>
+        </div>
+        
+        <div class="restart-container mt-3 reveal delay-8">
+          <p class="text-white mb-1">Want to go back to the beginning?</p>
+          <button class="secondary-btn" onclick="startAgain()">Start Again ❤️</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
 
   <script src="script.js"></script>
 </body>
